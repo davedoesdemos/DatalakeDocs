@@ -27,6 +27,35 @@ Modified data will generally be stored on ADLS Gen 2 since hierarchies will ensu
 
 ### Number of Accounts
 
+As a general rule you'll start with two storage accounts. One Blob account for raw data sets and one ADLS Gen 2 for everything else. Start with this and add accounts as and when you can justify more. Reasons you may want more accounts are:
+
+* Organisational separation
+* Regional separation
+* Security boundaries
+* Performance
+* System limitations
+
+#### Organisational Separation
+
+Where an organisation has separate business units it makes sense to use different accounts for these to enable M&A activity to proceed more easily should one BU need to move away from the others. This also gives clear ownership to data and allows different teams to own their own data.
+
+#### Regional Separation
+
+Where data is sourced from different regions it makes sense to land it locally in those regions in many scenarios. Once inside Azure, the networking uses a high speed network, and so processing may be able to leverage data from multiple locations.
+Conversely, latency from distance could interfere with processing time and so data may need to be colocated in one region for performance purposes.
+
+#### Security Boundaries
+
+In most scenarios, storage accounts can be used to segregate for security purposes. For instance HR data and Sales data may have very different security requirements and so should be stored in different accounts for simplicity of permissions and access control.
+
+#### Performance
+
+In many scenarios, separating data to different storage accounts can improve performance due to throughput limitations as mentioned below.
+
+#### System Limitations
+
+The [Microsoft documentation](https://docs.microsoft.com/en-us/azure/storage/common/scalability-targets-standard-account) shows the limits of storage accounts. Important things to note are throughput (particularly egress speed), transactions and number of accounts. The limit on accounts in a region is the reason we don't simply create one account per data set, although this is a soft limit and may be raised.
+
 ## Structure
 
 Many documents discuss using layers in the data lake to organise data. You'll often see concepts of "bronze, silver, gold", or "raw, curated, modelled". I find that these concepts, while useful to explain data lakes to beginners, don't convey the real requirements or purpose of structure within a lake. Leaving aside the obvious structural concepts of dates and data sources for the moment, structure needs to reflect organisational requirements. For this reason, my preferred explanation fits around data sets.
@@ -35,12 +64,12 @@ Many documents discuss using layers in the data lake to organise data. You'll of
 
 A data set must have an owner. This seems obvious since every other concept in IT includes an owner. Someone should be responsible for:
 
-* Data Lifecycle Management
+* Data life cycle management
 * Compliance
 * Availability
 * Transformation of data
-* Data Delivery Contract
-* Access Control
+* Data delivery contract
+* Access control
 
 Data sets will be created from raw data and/or other data sets. Raw data should also be thought of as data sets, and include all of the ownership and management discussed above. Where data is transformed, but does not constitute a deliverable data set on its own (i.e. does not include a data delivery contract of its own) it should be considered a transitional data set which belongs within the data set consuming it.
 
@@ -49,3 +78,7 @@ Data sets will be created from raw data and/or other data sets. Raw data should 
 This, in turn, enables us to pull the transitional data set out later and promote it to full data set if a second use case is found to consume it. This is analogous to the idea of silver or curated in other documentation, but it should be noted that this is not a function of the lake, or a layer on the lake but of a data set itself.
 
 ![promotedDataSet.png](images/promotedDataSet.png)
+
+## Access Control
+
+As a general rule, access control should be carried out at the presentation layer and not within the lake itself. Just like a SAN, there are very few scenarios where end users would need direct access to the data contained within. Instead, use of permissions on mount points, Data Factory connections or other systems should be the first choice.
