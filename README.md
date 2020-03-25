@@ -118,6 +118,39 @@ As mentioned elsewhere, Blob does not actually support folders. It does support 
 
  ![fileHierarchy.png](images/fileHierarchy.png)
 
+ When looking at all of these, ensure you take performance into account. Many small files are much slower to process than fewer large files, and therefore small files will cost more to process. File sizes of 250MiB to 1GiB should be the target. For this reason, it might be cheaper to process a month of data at a time, and re-process the entire month every day than to gather data in individual days throughout the month. Although the latter, using a YYYY/MM/DD folder structure, seems neater it will often cause performance issues if the daily data size is too small.
+
+## Files
+
+### Naming
+
+File naming is important to make the lake somewhat human readable for scenarios such as data science. The below are some attributes that might be useful as part of a filename. The aim here is not to include all of them but to include just enough to describe the file in a useful way.
+
+ * Date
+ * Time
+ * System
+ * Table
+ * Format
+ * Purpose
+ * Device Serial Number (IoT)
+
+ As explained above, small files do not perform well in this use-case and so you should design your processing around making files a reasonable size. For IoT and event type scenarios, have the system use time windows large enough to consolidate data. If data must be processed in small chunks, you may wish to have micro-batch files of 5 minutes but later consolidate them into 250MiB to 1GiB files for analytics and machine learning purposes, keeping the small files as a raw data set and creating the large ones as a consumable data set.
+
+### Formats
+
+#### CSV, TSV and other text based formats
+
+Text based file formats are by far the most common raw format in a data lake scenario. Almost every data solution ever made can export very efficiently to these formats. Benefits of these formats include extremely low CPU, disk and memory utilisation since they are sequentially written with almost no processing at all. When compute is the most expensive thing on the cloud, this is an important consideration.
+
+#### JSON
+
+#### AVRO
+
+#### Parquet
+
+#### Other
+
+Of course, any other format will work on a data lake. If you have other files such as images, movies, SQL files or anything else then they are OK to store there as long as you have a purpose for them.
 
 ## Access Control
 
