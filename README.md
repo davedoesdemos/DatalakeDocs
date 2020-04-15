@@ -1,6 +1,9 @@
 # DatalakeDocs
 
-Data lake documentation and opinions
+Data lake documentation and opinions.
+For the design workshop questionnaire, [go here](questionnaire.md)
+
+## Subscriptions
 
 ## Storage Accounts
 
@@ -65,6 +68,8 @@ This section is simple, but often misundertood. In traditional IT it was common 
 ## Structure
 
 The first thing to understand about the structure of a data lake is what you'll be storing on it. That may seem obvious, but it's worth a scentence or two to level understanding. You're going to be storing data sets in your lake (this is hopefully obvious). A data set, from a governance perspective, is either finished and consumable or it's not. You may have transitional data and experimental data in your lake too. Transitional data does not form part of the structure of the lake, it forms part of the structure of a data set, and will usually be transient (i.e. it's removed when processing completes). Experimental data is used by data scientists and machine learning experts and will often have an ad-hoc structure created by the team using it. This does not form part of your structured lake, aside from the top level container provided to that team.
+
+
 
 ### Data sets
 
