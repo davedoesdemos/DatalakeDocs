@@ -1,3 +1,9 @@
+leftmost data by default
+no layers at all, it's all datasets, location is entirely based on requirements
+partitioning
+
+
+
 # DatalakeDocs
 
 Data lake documentation and opinions.
