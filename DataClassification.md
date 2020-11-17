@@ -25,3 +25,18 @@ Primary data may also be copied to systems which are not in production, in order
 ### Has the data been modified for privacy or compliance reasons?
 
 Primary data may be copied and modified to remove specific information, for example personally identifiable information (PII) or credit card information (for regulatory reasons). The destination of this copy does not affect the classification of the data, it may be a development location or a production location. The act of cleansing the data. In all instances, the data classification will change from primary data with very strict controls around use, security, movement and processing to what I will call **"safe data"** which might have less stringent controls for the purposes of data manipulation. If the safe data remains in a production environment, then the production governance will still apply to ensure that the safe data does not become corrupted or unusable, but this is distinct from the data security and compliance controls.
+
+## Test Data
+
+
+![TestData.png](images/TestData.png)
+
+### Structured Testing
+
+The pass/fail nature of structured testing means that you must have an assertion and a known answer. This is not possible to do with fresh data from live systems in any controlled or repeatable manner. For this reason **"Test Data"** must be user generated based on those assertions and answers. If you are testing an aggregation then you must generate known data, manually compute the aggregation and then set that as the answer to the test. This way the test is repeatable and has a different path than the thing you are testing.
+
+### Accuracy Testing
+
+Machine learning tests are very different to structured testing and instead often incorporate some manual statistical analysis. In this instance it is likely that your "test data" is just part of your data set and so a different data set may not be required, or may just be a partial copy to a new location.
+
+![flowchart.png](images/flowchart.png)
