@@ -9,8 +9,13 @@ This document aims to clear up some misconceptions around data classification an
 ## Production Data
 
 The term production data is often used to refer to the actual business data. As such, the term production can be misleading since it implies that data is in the production environment. There are various considerations which can make this clear, with new classifications laid out below.
-
-![PrimarySafeLiveExperimental.png](images/PrimarySafeLiveExperimental.png)
+<table>
+<tr>
+<td width="25%">&nbsp;</td>
+<td width="50%"><img src="images/PrimarySafeLiveExperimental.png" /></td>
+<td width="25%">&nbsp;</td>
+</tr>
+</table>
 
 ### Is this the primary copy of the data?
 
@@ -28,8 +33,13 @@ Primary data may be copied and modified to remove specific information, for exam
 
 ## Test Data
 
-
-![TestData.png](images/TestData.png)
+<table>
+<tr>
+<td width="25%">&nbsp;</td>
+<td width="50%"><img src="images/TestData.png" /></td>
+<td width="25%">&nbsp;</td>
+</tr>
+</table>
 
 ### Structured Testing
 
@@ -39,7 +49,13 @@ The pass/fail nature of structured testing means that you must have an assertion
 
 Machine learning tests are very different to structured testing and instead often incorporate some manual statistical analysis. In this instance it is likely that your "test data" is just part of your data set and so a different data set may not be required, or may just be a partial copy to a new location.
 
-![flowchart.png](images/flowchart.png)
+<table>
+<tr>
+<td width="15%">&nbsp;</td>
+<td width="70%"><img src="images/flowchart.png" /></td>
+<td width="15%">&nbsp;</td>
+</tr>
+</table>
 
 ## Data Classifications
 
