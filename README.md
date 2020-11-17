@@ -88,6 +88,8 @@ A data set must have an owner. This seems obvious since every other concept in I
 * Data delivery contract
 * Access control
 
+Some idea of the [data classification](DataClassification.md) should also be recorded to determine the operational and regulatory compliance required for the data set.
+
 Data sets will be created from raw data and/or other data sets. Raw data should also be thought of as data sets, and include all of the ownership and management discussed above. Where data is transformed, but does not constitute a deliverable data set on its own (i.e. does not include a data delivery contract of its own) it should be considered a transitional data set which belongs within the data set consuming it.
 
 ![transitionalDataSet.png](images/transitionalDataSet.png)
