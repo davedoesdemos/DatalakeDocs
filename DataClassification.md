@@ -40,3 +40,70 @@ The pass/fail nature of structured testing means that you must have an assertion
 Machine learning tests are very different to structured testing and instead often incorporate some manual statistical analysis. In this instance it is likely that your "test data" is just part of your data set and so a different data set may not be required, or may just be a partial copy to a new location.
 
 ![flowchart.png](images/flowchart.png)
+
+## Data Classifications
+
+### Primary Data
+
+<table>
+<tr>
+<td>Operational Governance</td>
+<td bgcolor="#ff3333"><font color="#000000">yes</font></td>
+</tr>
+<tr>
+<td>Regulatory Governance</td>
+<td bgcolor="#ff3333"><font color="#000000">yes</font></td>
+</tr>
+</table>
+
+### Live Data
+
+<table>
+<tr>
+<td>Operational Governance</td>
+<td bgcolor="#ff3333"><font color="#000000">yes</font></td>
+</tr>
+<tr>
+<td>Regulatory Governance</td>
+<td bgcolor="#33ccff"><font color="#000000">N/A</font></td>
+</tr>
+</table>
+
+### Experimental Data
+
+<table>
+<tr>
+<td>Operational Governance</td>
+<td bgcolor="#33ff33"><font color="#000000">No</font></td>
+</tr>
+<tr>
+<td>Regulatory Governance</td>
+<td bgcolor="#33ccff"><font color="#000000">N/A</font></td>
+</tr>
+</table>
+
+### Safe Data
+
+<table>
+<tr>
+<td>Operational Governance</td>
+<td bgcolor="#33ccff"><font color="#000000">N/A</font></td>
+</tr>
+<tr>
+<td>Regulatory Governance</td>
+<td bgcolor="#ff3333"><font color="#000000">yes</font></td>
+</tr>
+</table>
+
+### Test Data
+
+<table>
+<tr>
+<td>Operational Governance</td>
+<td bgcolor="#33ccff"><font color="#000000">N/A</font></td>
+</tr>
+<tr>
+<td>Regulatory Governance</td>
+<td bgcolor="#33ccff"><font color="#000000">N/A</font></td>
+</tr>
+</table>
