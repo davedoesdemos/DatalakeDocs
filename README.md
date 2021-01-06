@@ -87,6 +87,7 @@ A data set must have an owner. This seems obvious since every other concept in I
 * Transformation of data
 * Data delivery contract
 * Access control
+* Performance
 
 Some idea of the [data classification](DataClassification.md) should also be recorded to determine the operational and regulatory compliance required for the data set.
 
