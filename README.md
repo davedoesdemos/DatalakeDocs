@@ -9,6 +9,10 @@ partitioning
 Data lake documentation and opinions.
 For the design workshop questionnaire, [go here](questionnaire.md)
 
+[Data Environment Classification](DataClassification.md) documentation
+
+[Security Concepts](security.md)
+
 ## Subscriptions
 
 ## Storage Accounts
