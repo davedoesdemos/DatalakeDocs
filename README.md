@@ -13,6 +13,8 @@ For the design workshop questionnaire, [go here](questionnaire.md)
 
 [Security Concepts](security.md)
 
+[Availability Concepts and SLAs](Availablility.md)
+
 ## Subscriptions
 
 ## Storage Accounts
