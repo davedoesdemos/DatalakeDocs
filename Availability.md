@@ -26,7 +26,11 @@ Generically, a service level agreement covers the service that the provider *int
  * Resilient hardware
  * Advanced low maintenance software (no reboots on update)
 
-This is not an exhaustive list but shows that there are numerous factors in making an SLA. If a provider is able to update the network card firmware on a virtual host without stopping virtual machines on that host then a better SLA can be provided. If that virtual machine must be restarted in order to apply an update to the virtual hardware or drivers, then that reboot time must be subtracted from the SLA. If the restart is expected to take 5 minutes, and is likely to occur once per quarter, then 20 minutes will be subtracted from the SLA. Work through every component in the solution and you will arrive at a total expected downtime per year *on average*. This is then turned into a percentage and supplied as an SLA.
+This is not an exhaustive list but shows that there are numerous factors in making an SLA. If a provider is able to update the network card firmware on a virtual host without stopping virtual machines on that host then a better SLA can be provided. If that virtual machine must be restarted in order to apply an update to the virtual hardware or drivers, then that reboot time must be subtracted from the SLA. If the restart is expected to take 5 minutes, and is likely to occur once per quarter, then 20 minutes will be subtracted from the SLA. Work through every component in the solution and you will arrive at a total expected downtime per year *on average*. This is then turned into a percentage and supplied as an SLA. An important factor to note is that most SLAs will include a provision that any specifically scheduled outages which you have been given a certain notice period for will be excluded from the SLA availability. For instance there might be a planned outage in a regional data centre, during which you are expected to move your workload elsewhere.
+
+### What is availability
+
+Availability is extremely difficult to define since it means different things to different people at different times. It is possible for something to be wrong with the service while it still carries out its main functionality. For instance, if an authentication service is unavailable, a web server might continue to provide web services to the public even if it is not possible for the owner to log in and make changes. In this example, most SLAs would consider the authentication service unavailable, but the web server available since it would work fine if you had a different way to authenticate.
 
 ### When is the outage
 
@@ -53,6 +57,8 @@ It is extremely unlikely that the maintenance of two services will be interrelat
 Failure scenarios are not a part of the SLA, and so any consideration of failures is separate to the subject of SLA and therefore not related to that number.
 
 The two services are probably not related and so multiplication of the SLA numbers is mathematically inappropriate since they do not represent the likelihood of a service being unavailable (risk, discussed below). The number produced by doing so does not relate to anything in either service and certainly not to both and is therefore effectively a random figure. If you added the expected annual outages from each service you would simply end up with a number representing the maximum expected maintenance downtime per year. That's only if all services had their allotted outage at different times which is unlikely in highly automated environments with strong SLAs. There is no architectural direction to be gleaned from this information, since each outage still must be addressed individually in the architecture to improve your outcome (i.e. less down time of your solution).
+
+Going back to the example from above, a web service might remain available, making your solution fully available, even if the internal authentication mechanism is offline. Artificially connecting their SLAs in this scenario would be unhelpful and would likely lead to unnecessary changes to architecture. Instead, services should be considered individually and mitigating changes to architecture made where appropriate based on impact rather than arbitrary numbers.
 
 ## Risk
 
