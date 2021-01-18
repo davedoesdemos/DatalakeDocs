@@ -1,4 +1,4 @@
-# Availability and SLAs [Draft]
+# Availability and SLAs
 
 **produced by Dave Lusty**
 
