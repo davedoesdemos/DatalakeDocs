@@ -1,9 +1,3 @@
-leftmost data by default
-no layers at all, it's all datasets, location is entirely based on requirements
-partitioning
-
-
-
 # DatalakeDocs
 
 Data lake documentation and opinions.
@@ -57,7 +51,7 @@ Where an organisation has separate business units it makes sense to use differen
 #### Regional Separation
 
 Where data is sourced from different regions it makes sense to land it locally in those regions in many scenarios. Once inside Azure, the networking uses a high speed network, and so processing may be able to leverage data from multiple locations.
-Conversely, latency from distance could interfere with processing time and so data may need to be colocated in one region for performance purposes.
+Conversely, latency from distance could interfere with processing time and so data may need to be co-located in one region for performance purposes.
 
 #### Security Boundaries
 
@@ -73,13 +67,13 @@ The [Microsoft documentation](https://docs.microsoft.com/en-us/azure/storage/com
 
 ### Storage Account Naming
 
-This section is simple, but often misundertood. In traditional IT it was common to come up with a naming scheme. In the cloud this is not always possible, and storage accounts are one of those times. Storage accounts have a public endpoint and so use DNS globally unique names for access. As such you can not enforce a naming scheme for storage accounts. Let me say that again **you can not enforce a naming scheme for storage accounts**. The solution is to either use auto-generated names, random names, unique-string (in ARM templates) or some combination of those. This is not an issue if you use the wider Azure service effectively with resource group names (based on internal service identifiers usually), tags (you can add a description tag), and the various columns of information in the portal which already tell you it's a storage account. There is no benefit to including the Azure service type in your naming, since every single method of listing objects allows you to search, sort and view by service type. You can see the portal version of this below, showing type, region and environment tags alongside resource names. You can also see the powerful filtering system which would allow us to drill down into any of these attributes quickly to find the right resource.
+This section is simple, but often misunderstood. In traditional IT it was common to come up with a naming scheme. In the cloud this is not always possible, and storage accounts are one of those times. Storage accounts have a public endpoint and so use DNS globally unique names for access. As such you can not enforce a naming scheme for storage accounts. Let me say that again **you can not enforce a naming scheme for storage accounts**. The solution is to either use auto-generated names, random names, unique-string (in ARM templates) or some combination of those. This is not an issue if you use the wider Azure service effectively with resource group names (based on internal service identifiers usually), tags (you can add a description tag), and the various columns of information in the portal which already tell you it's a storage account. There is no benefit to including the Azure service type in your naming, since every single method of listing objects allows you to search, sort and view by service type. You can see the portal version of this below, showing type, region and environment tags alongside resource names. You can also see the powerful filtering system which would allow us to drill down into any of these attributes quickly to find the right resource.
 
 ![images/portalNaming.png](images/portalNaming.png)
 
 ## Structure
 
-The first thing to understand about the structure of a data lake is what you'll be storing on it. That may seem obvious, but it's worth a scentence or two to level understanding. You're going to be storing data sets in your lake (this is hopefully obvious). A data set, from a governance perspective, is either finished and consumable or it's not. You may have transitional data and experimental data in your lake too. Transitional data does not form part of the structure of the lake, it forms part of the structure of a data set, and will usually be transient (i.e. it's removed when processing completes). Experimental data is used by data scientists and machine learning experts and will often have an ad-hoc structure created by the team using it. This does not form part of your structured lake, aside from the top level container provided to that team.
+The first thing to understand about the structure of a data lake is what you'll be storing on it. That may seem obvious, but it's worth a sentence or two to level understanding. You're going to be storing data sets (sometimes referred to as data domains, depending on the scale) in your lake (this is hopefully obvious). A data set, from a governance perspective, is either finished and consumable or it's not. You may have transitional data and experimental data in your lake too. Transitional data does not form part of the structure of the lake, it forms part of the structure of a data set, and will usually be transient (i.e. it's removed when processing completes). Experimental data is used by data scientists and machine learning experts and will often have an ad-hoc structure created by the team using it. This does not form part of your structured lake, aside from the top level container provided to that team.
 
 
 
@@ -107,7 +101,7 @@ This, in turn, enables us to pull the transitional data set out later and promot
 
 ### Data Set Types
 
-The below shows some descriptions of data often referred to as layers. While these concepts are very useful within the data set to describe the steps of processing to take incoming data (or other data sets) and create a data set, they offer little in terms of structuring a data lake. Where necessary, these should be encapsulated inside of a data set or treated as transitional data sets. In reality, many of these steps can be consolidated into a single pipeline and so will often not land as objects on the lake.
+The below shows some descriptions of data often referred to as layers. While these concepts are very useful within the data set to describe the steps of processing to take incoming data (or other data sets) and create a data set, they offer little in terms of structuring a data lake. For instance, it is quite common to rename columns to a standard, remove duplication and null values to create a "clean" version of your data after writing the raw incoming data to the lake. This clean version of the data might be written out as a data set to be consumed, or it might be further modelled to create a data set ready for consumption. In neither case would the action dictate structure on the lake, both are simply data sets with attributes, and both can be written to the lake and consumed with the constraints those attributes dictate. Since these attributes have a many to many relationship with data sets it very quickly becomes difficult to force them into the structure of the lake artificially. Where necessary, these attributes should be encapsulated inside of a data set or treated as transitional data sets. In reality, many of these steps can be consolidated into a single pipeline and so will often not land as file objects on the lake. An exception to this might be where structure enables automation for instance incorporating file format into the path to allow consumption to be directed to the correct format. Again, this is likely to fall beneath the data set container rather than above it.
 
  * Raw
   * Incoming data
