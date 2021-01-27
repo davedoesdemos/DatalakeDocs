@@ -1,4 +1,4 @@
-# DatalakeDocs
+# Data Lake Docs
 
 Data lake documentation and opinions.
 For the design workshop questionnaire, [go here](questionnaire.md)
