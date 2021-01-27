@@ -79,15 +79,17 @@ The first thing to understand about the structure of a data lake is what you'll 
 
 ### Data sets
 
-A data set must have an owner. This seems obvious since every other concept in IT includes an owner. Someone should be responsible for:
+A data set must have an owner. This seems obvious since every other concept in IT includes an owner. That owner will be responsible for the lifecycle of the data set, even when there are no changes to be made. The data set itself should have, as a minimum, the following attributes defined and understood:
 
 * Data life cycle management
-* Compliance
-* Availability
+* Regulatory Compliance
+* Availability Requirements
 * Transformation of data
-* Data delivery contract
+* Data delivery contract (Schema)
 * Access control
-* Performance
+* Performance Requirements
+* Location/Region
+* List of Data Consumers
 
 Some idea of the [data classification](DataClassification.md) should also be recorded to determine the operational and regulatory compliance required for the data set.
 
