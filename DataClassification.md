@@ -57,6 +57,15 @@ Machine learning tests are very different to structured testing and instead ofte
 </tr>
 </table>
 
+In a real scenario this might look like the below
+<table>
+<tr>
+<td width="15%">&nbsp;</td>
+<td width="70%"><img src="images/classificationFlow.png" /></td>
+<td width="15%">&nbsp;</td>
+</tr>
+</table>
+
 ## Data Classifications
 
 ### Primary Data
