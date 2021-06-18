@@ -9,6 +9,8 @@ For the design workshop questionnaire, [go here](questionnaire.md)
 
 [Availability Concepts and SLAs](Availability.md)
 
+[Data Platform](DataPlatform.md)
+
 ## Subscriptions
 
 ## Storage Accounts
