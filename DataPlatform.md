@@ -50,7 +50,7 @@ The team will decide how to present their data product out to the world. This ma
 
 > **Decision**
 >
-> Within your architecture and organisation you should decide who will be the "publisher" of data products. Will each team be responsible for presenting their own data (possibly with the help of the data team), or will you centralise that task and have a data team extract data from those systems? In both cases you can still segregate by data product. 
+> Within your architecture and organisation you should decide who will be the "publisher" of data products. Will each team be responsible for presenting their own data (possibly with the help of the data team), or will you centralise that task and have a data team extract data from those systems? In both cases you can still segregate by data product. This decision can be seen as similar to the centralised vs hub and spoke models.
 
 ### Data
 
@@ -64,9 +64,17 @@ Each data product must comprise of zero or more upstream sources for its data. W
 
 <table>
 <tr>
-<td width="25%">&nbsp;</td>
+<td width="50%">An ingest data product is used for bringing data into the platform. As a general rule data will not be modified within this data product, and the data will be read only once ingested, so as to make an immutable copy which can be used later to reprocess other data products without going back to source systems. These are often owned by the owner of the source system of record, who may occasionally change their own schema and as a result will need to update the data product which consumes it. It is likely that the same team may also create a second data product which is a refined version of this data, ready for consumption by the business.</td>
 <td width="50%"><img src="images/examples/dataIngest.png" /></td>
-<td width="25%">&nbsp;</td>
+</tr>
+</table>
+
+### Refine and Enrich Data
+
+<table>
+<tr>
+<td width="50%">A common scenario is that multiple data sources will be combined to create a new data product, or a master version of a data table. These refinement patterns might also be used to transform and refine a single "raw" data set to make it more consumable by laying out the data in simpler semantic schemas, or translating to one or more consumable file formats (CSV, Parquet, etc.).</td>
+<td width="50%"><img src="images/examples/refineAndEnrichDataSet.png" /></td>
 </tr>
 </table>
 
@@ -74,9 +82,8 @@ Each data product must comprise of zero or more upstream sources for its data. W
 
 <table>
 <tr>
-<td width="25%">&nbsp;</td>
+<td width="50%">Event based data is often not a core part of a data platform, but rather a part of some other near real-time system. The pattern for this shows that there is an event flow with eventual presentation (perhaps within the event app itself) but we also take a copy of the event data onto the lake for consumption by other products.</td>
 <td width="50%"><img src="images/examples/eventData.png" /></td>
-<td width="25%">&nbsp;</td>
 </tr>
 </table>
 
@@ -84,9 +91,17 @@ Each data product must comprise of zero or more upstream sources for its data. W
 
 <table>
 <tr>
-<td width="25%">&nbsp;</td>
-<td width="50%"><img src="images/examples/dataIngest.png" /></td>
-<td width="25%">&nbsp;</td>
+<td width="50%">Data from sources outside of the business will often have a very different pattern to internal ingestion. This might take the form of a Logic App to integrate with external APIs and request data, or a web hook to allow third parties to push data into the environment. These patterns might include more checks for security or hygiene of the data before presenting it internally as a data product.</td>
+<td width="50%"><img src="images/examples/externalData.png" /></td>
+</tr>
+</table>
+
+### Code Library
+
+<table>
+<tr>
+<td width="50%">When code libraries are consumed by multiple products they will become products of their own. This pattern shows how the library code is put through a build process to compile (where necessary) and then the built package tested and pushed into an object repository from where it can be consumed. The object repository allows consumers to manage versioning and updating in the same way as public library repositories. While not technically a data product I have included it here because there will often be libraries for data quality checks or cross referencing in a data environment which will produce code packages for internal use.</td>
+<td width="50%"><img src="images/examples/codeLibrary.png" /></td>
 </tr>
 </table>
 
@@ -94,8 +109,25 @@ Each data product must comprise of zero or more upstream sources for its data. W
 
 <table>
 <tr>
-<td width="25%">&nbsp;</td>
+<td width="50%">Enterprise Data Warehouses are a core pattern in a data platform. These will consume other data products in the environment and then model the data into consumable information</td>
 <td width="50%"><img src="images/examples/modelledDataEDW.png" /></td>
-<td width="25%">&nbsp;</td>
+</tr>
+</table>
+
+### Reporting
+
+<table>
+<tr>
+<td width="50%">Reporting is another common scenario where data products are consumed and pushed into a reporting platform for consumption or alongside pre-canned reports. Often for heavily utilised reporting, a caching layer will be used such as Analysis Services to enable much higher concurrency, add a role based security layer, or simply add a semantic layer to the data.</td>
+<td width="50%"><img src="images/examples/reporting.png" /></td>
+</tr>
+</table>
+
+### Machine Learning
+
+<table>
+<tr>
+<td width="50%">Machine learning is a common scenario where data products, and often other data sources, are used to train a machine learning model. MLOps will potentially then be used to train and test this model before delivering it to a container registry where it can be consumed by other services. The other services will then use the container registry to version control the model they use to process data, and they will pull that container image to create a service which processes data in their own product.</td>
+<td width="50%"><img src="images/examples/machineLearning.png" /></td>
 </tr>
 </table>
