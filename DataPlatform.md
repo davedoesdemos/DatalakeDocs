@@ -12,9 +12,9 @@ At it's simplest, a data platform consists of a set of data products which will 
 
 <table>
 <tr>
-<td width="25%">&nbsp;</td>
-<td width="50%"><img src="images/DataPlatformOverview.png" alt="Diagram showing the components of a data platform which is made up of multiple data products" /></td>
-<td width="25%">&nbsp;</td>
+<td width="15%">&nbsp;</td>
+<td width="70%"><img src="images/DataPlatformOverview.png" alt="Diagram showing the components of a data platform which is made up of multiple data products" /></td>
+<td width="15%">&nbsp;</td>
 </tr>
 </table>
 
@@ -24,9 +24,9 @@ The platform will use multiple layers of management tooling for different purpos
 
 <table>
 <tr>
-<td width="25%">&nbsp;</td>
-<td width="50%"><img src="images/GovernanceLayers.png" alt="Diagram showing the various layers of governance required to manage the whole platform including examples of ITIL at the service management layer, Agile and Waterfall at the product layer, and container registries, API Management and data catalogues at the product management layer." /></td>
-<td width="25%">&nbsp;</td>
+<td width="15%">&nbsp;</td>
+<td width="70%"><img src="images/GovernanceLayers.png" alt="Diagram showing the various layers of governance required to manage the whole platform including examples of ITIL at the service management layer, Agile and Waterfall at the product layer, and container registries, API Management and data catalogues at the product management layer." /></td>
+<td width="15%">&nbsp;</td>
 </tr>
 </table>
 
@@ -53,13 +53,13 @@ Each product will have some kind of output, whether that's a data set, ML model,
 
 ## Data Products
 
-Data products are the basic component of the platform. Each data product is a self contained and self describing product that must form a contract with the outside world and must be discoverable. In an ideal world, a data product should not have any tightly coupled dependencies and while it may depend on other data products, that relationship should be loosely coupled such that, for instance, late processing of one does not affect the other. If tightly coupling is required, for instance to meet processing time requirements, then it is often better to encapsulate the whole process inside a single product. While this might mean duplication of effort in some cases, it is ultimately more manageable in the long term.
+Data products are the basic component of the platform. Each data product is a self contained and self describing product that must form a contract with the outside world and must be discoverable. In an ideal world, a data product should not have any tightly coupled dependencies and while it may depend on other data products, that relationship should be loosely coupled such that, for instance, late processing of one does not affect the other. If tight coupling is required, for instance to meet processing time requirements, then it is often better to encapsulate the whole process inside a single product. While this might mean duplication of effort in some cases, it is ultimately more manageable in the long term. Often a data product will map one to one with some kind of project and team, but sometimes it can be convenient to develop multiple products within a project and to share resources from one team across them.
 
 <table>
 <tr>
-<td width="25%">&nbsp;</td>
-<td width="50%"><img src="images/DataProduct.png" alt="Diagram showing the various attributes of a data product. These are data lifecycle, access control, infrastructure, owner/steward, data sources, data set lifecycle (project, ITIL, Agile), team, and the data contract. The data contract comprises Data, data format(s), data transformations, availability, schema(s), performance, sensitivity, compliance" /></td>
-<td width="25%">&nbsp;</td>
+<td width="15%">&nbsp;</td>
+<td width="70%"><img src="images/DataProduct.png" alt="Diagram showing the various attributes of a data product. These are data lifecycle, access control, infrastructure, owner/steward, data sources, data set lifecycle (project, ITIL, Agile), team, and the data contract. The data contract comprises Data, data format(s), data transformations, availability, schema(s), performance, sensitivity, compliance" /></td>
+<td width="15%">&nbsp;</td>
 </tr>
 </table>
 
@@ -70,9 +70,9 @@ In the same way as any other product, data products might be stand alone, or the
 
 <table>
 <tr>
-<td width="25%">&nbsp;</td>
-<td width="50%"><img src="images/components.png" alt="Diagram showing how dependencies work between data products. Here, we see three data products each dependent on the last, as well as a code library product being used by the second and third data products" /></td>
-<td width="25%">&nbsp;</td>
+<td width="15%">&nbsp;</td>
+<td width="70%"><img src="images/components.png" alt="Diagram showing how dependencies work between data products. Here, we see three data products each dependent on the last, as well as a code library product being used by the second and third data products" /></td>
+<td width="15%">&nbsp;</td>
 </tr>
 </table>
 
