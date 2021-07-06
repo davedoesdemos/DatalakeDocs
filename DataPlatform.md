@@ -8,7 +8,7 @@ This document aims to set out what a data platform is and what is necessary to m
 
 ## Data Platform
 
-At it's simplest, a data platform consists of some kind of catalog to find and describe data, and a bunch of data products which will each house some kind of solution, be it a data set or a streaming data analytics solution. Each one is an encapsulated system with known outputs and inputs. I have chosen to avoid going into technical architecture at this stage, because it distracts from the real challenge of a data platform which is how it fits within the organisation, who manages and maintains it, and who builds it? These questions must be answered before you can decide any technical aspects of the design, and they will heavily influence that design. Please bear in mind that this document describes a "cloud" data environment. If you are building a legacy architecture where you deploy the platform and then fill it with data, this document is not for you. This architecture is cloud native from the ground up, meaning that components are deployed as needed and the solution is modular with individually scaled parts. That is not to say this must be public cloud. A data product can, and often will be implemented using traditional on-premises data products. The idea of cloud architecture is related to the way we implement and scale a solution in a more modular way.
+At it's simplest, a data platform consists of a set of data products which will each house some kind of solution, be it a data set, a streaming data analytics solution, or a machine learning model. It is also generally useful, but not essential, to add some governance tooling as data products in your environment, in order to make your data sets and other products discoverable. These may include one or more container registries, API management portals, and data catalogues. Each product is an encapsulated system with known outputs and inputs. I have chosen to avoid going into technical architecture at this stage, because it distracts from the real challenge of a data platform which is how it fits within the organisation, who manages and maintains it, and who builds it? These questions must be answered before you can decide any technical aspects of the design, and they will heavily influence that design. Please bear in mind that this document describes a "cloud" data environment. If you are building a legacy architecture where you deploy the platform and then fill it with data, this document is not for you. This architecture is cloud native from the ground up, meaning that components are deployed as needed and the solution is modular with individually scaled parts. That is not to say this must be public cloud, nor that we can't use shared components. An example of a shared component might be a storage account where we "deploy" a container for a new data product rather than deploying a new storage account. A data product can, and often will be implemented using traditional on-premises data products. The idea of cloud architecture is related to the way we implement and scale a solution in a more modular way.
 
 <table>
 <tr>
@@ -17,6 +17,39 @@ At it's simplest, a data platform consists of some kind of catalog to find and d
 <td width="25%">&nbsp;</td>
 </tr>
 </table>
+
+### Governance Tooling
+
+The platform will use multiple layers of management tooling for different purposes. These are important for creating and developing the products, managing and maintaining, and for discovering the products. Each product might fit with one or more management tools in each layer.
+
+<table>
+<tr>
+<td width="25%">&nbsp;</td>
+<td width="50%"><img src="images/GovernanceLayers.png" alt="Diagram showing the various layers of governance required to manage the whole platform including examples of ITIL at the service management layer, Agile and Waterfall at the product layer, and container registries, API Management and data catalogues at the product management layer." /></td>
+<td width="25%">&nbsp;</td>
+</tr>
+</table>
+
+#### IT Service Management
+
+This whole platform is designed to sit within some kind of a service oriented architecture, and so it is quite likely that you will have something like ITIL sitting above it and managing access and change. Each data product will likely have some kind of request system to get access, alongside an approval process and possibly also an automated system to make those changes. This layer is considered out of the scope of this documentation, and does not materially affect the architecture.
+
+#### Project Management and Development
+
+Each product in the platform will have a development lifecycle which will differ based on the type of product it is. For instance, a data catalogue product might be implemented in a more traditional project management approach and then considered "finished". Other products might use DevOps and Agile approaches to ensure there is a strong feedback loop with the customers of the product, and continuous development.
+
+#### Product Management
+
+Each product will have some kind of output, whether that's a data set, ML model, container image, API or code library. Each of these would potentially be registered into a management solution to make it discoverable by the wider community whether that be inside of the business or outside.
+
+**Data Catalogues** - You might need one or more data catalogues to make your data sources and data sets discoverable, and as a place to store documentation and metadata about those data sets. These can either be centralised in the business, or community driven depending on how the business users operate, and how related the various data sets are. You may also have external data catalogues which are more carefully curated to be customer facing.
+
+**Object Repositories** - If you develop code then you almost certainly will need an internal object repository such as Azure Artifacts. This will be used to store your internally developed code libraries ready to deploy into your projects. Often you will also want to replicate public library sources for internal use to ensure that there is no disruption to your projects if that public source disappears or has an outage, as well as keeping previous versions in case a bug is introduced.
+
+**Container Registries** - Many products such as machine learning will output a container image. This image needs to be stored somewhere appropriate ready for deployment into a service. Container registries are the way to store and document these images.
+
+**API Management** - Often your products will surface an API which can be consumed by the business, for instance where a machine learning model has been deployed into service form. In this instance, you will need one or more API Management portals to allow developers to easily consume your API. Often you will need separate portals for internal and external use, as well as potentially separating by developer community where appropriate.
+
 
 ## Data Products
 
