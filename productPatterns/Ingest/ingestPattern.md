@@ -9,7 +9,7 @@ This data ingest pattern can be used to batch ingest data and produce one or mor
 <table>
 <tr>
 <td width="15%">&nbsp;</td>
-<td width="70%"><img src="images/dataIngest.png" alt="Diagram showing the basic data ingest pattern" /></td>
+<td width="70%"><img src="Images/dataIngest.png" alt="Diagram showing the basic data ingest pattern" /></td>
 <td width="15%">&nbsp;</td>
 </tr>
 </table>
@@ -53,7 +53,7 @@ Since this pattern is centred around Azure Data Factory the requirements are lar
 <table>
 <tr>
 <td width="15%">&nbsp;</td>
-<td width="70%"><img src="images/lifecycleDev.png" alt="Flow of development infrastructure lifecycle as described in the text below" /></td>
+<td width="70%"><img src="Images/lifecycleDev.png" alt="Flow of development infrastructure lifecycle as described in the text below" /></td>
 <td width="15%">&nbsp;</td>
 </tr>
 </table>
@@ -87,7 +87,7 @@ This lifecycle is used to create the ARM templates which are used to deploy the 
 <table>
 <tr>
 <td width="15%">&nbsp;</td>
-<td width="70%"><img src="images/lifecycleProd.png" alt="Flow of production infrastructure lifecycle as described in the text below" /></td>
+<td width="70%"><img src="Images/lifecycleProd.png" alt="Flow of production infrastructure lifecycle as described in the text below" /></td>
 <td width="15%">&nbsp;</td>
 </tr>
 </table>
@@ -118,7 +118,7 @@ In the case of value format errors it might be generally favourable to allow bad
 <table>
 <tr>
 <td width="15%">&nbsp;</td>
-<td width="70%"><img src="images/lifecycleTesting.png" alt="Flow of testing and test data lifecycle as described in the text below" /></td>
+<td width="70%"><img src="Images/lifecycleTesting.png" alt="Flow of testing and test data lifecycle as described in the text below" /></td>
 <td width="15%">&nbsp;</td>
 </tr>
 </table>
@@ -158,7 +158,7 @@ When developing the actual pipelines, the development ADF environment is used to
 <table>
 <tr>
 <td width="15%">&nbsp;</td>
-<td width="70%"><img src="images/lifecyclePipelines.png" alt="Flow of Data ingest pipeline lifecycle as described in the text below" /></td>
+<td width="70%"><img src="Images/lifecyclePipelines.png" alt="Flow of Data ingest pipeline lifecycle as described in the text below" /></td>
 <td width="15%">&nbsp;</td>
 </tr>
 </table>
